@@ -19,7 +19,7 @@ var symbol = ' !"#$%&()*+,-./:;<=>?@[\]^_`{|}~';
   
   
 //code to make sure a character is selected
-
+var userChoices = '';
 
 if (confirmLowerCase === true) {
     userChoices += lowerCase;
@@ -40,18 +40,19 @@ if (confirmSymbol === true) {
   
   // Write password to the #password input
   function writePassword() {
-    var userChoices = '';
+
     var password = generatePassword();
     var passwordText = document.querySelector("#password");
   
     passwordText.value = password;
   
     for (var i = 0; i < passwordLength; i++) {
-        var allChoices = userChoices[Math.floor(Math.random() * userChoices.length)];
-        generatePassword(allChoices);
+        console.log(userChoices[Math.floor(Math.random() * userChoices.length)]);
+        generatePassword(password);
   }
     
-    return allChoices;}
+    return password;}
+
 
    // document.getElementById("textarea").value = generatePassword(password);
 
@@ -60,26 +61,34 @@ if (confirmSymbol === true) {
   generateBtn.addEventListener("click", writePassword);
 
   function generatePassword() {
-    passwordLength = prompt("Password length: choose between 8 and 128 characters.");
+    //window.alert("Your password has been generated!");
+  }
+
+
+
+
+//person->program storage of answers using var
+
+    var passwordLength = window.prompt("Password length: choose between 8 and 128 characters.");
     console.log("Password length " + passwordLength);
   
   if(!passwordLength) {
     alert("Required Value");
   } else if (passwordLength <8 || passwordLength >128) {
-    passwordLength = prompt("You must choose between 8 and 128");
-    //console.log("Password length " + passwordLength);
+    passwordLength = window.prompt("You must choose between 8 and 128");
+    
   } else {
 
-    confirmLowerCase = confirm("Would you like to include lower case letters?");
+    var confirmLowerCase = window.confirm("Would you like to include lower case letters?");
     console.log("Lower case " + confirmLowerCase);
 
-    confirmUpperCase = confirm("Would you like to include upper case letters?")
+    var confirmUpperCase = window.confirm("Would you like to include upper case letters?")
     console.log("Upper case " + confirmUpperCase);
 
-    confirmNumber = confirm("Would you like to include numbers?");
+    var confirmNumber = window.confirm("Would you like to include numbers?");
     console.log("Number " + confirmNumber);
 
-    confirmSymbol = confirm("Would you like to include special characters?");
+    var confirmSymbol = window.confirm("Would you like to include special characters?");
     console.log("Symbol " + confirmSymbol);
 
   ;
@@ -88,4 +97,6 @@ if (confirmSymbol === true) {
   // No answer then
   if (!confirmLowerCase && !confirmUpperCase && !confirmNumber && !confirmSymbol) {
     userChoices = alert("You must select one!");
-  }}}
+  }}
+
+  generatePassword();
