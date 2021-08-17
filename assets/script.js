@@ -1,26 +1,16 @@
 // Assignment code here
-var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var lowerCase = "abcdefghijklmnopqrstuvwxyx";
-var number = "0123456789";
-var symbol = ' !"#$%&()*+,-./:;<=>?@[\]^_`{|}~';
+  var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var lowerCase = "abcdefghijklmnopqrstuvwxyx";
+  var number = "0123456789";
+  var symbol = ' !"#$%&()*+,-./:;<=>?@[\]^_`{|}~';
 
 // Get references to the #generate element
   var generateBtn = document.querySelector("#generate"); 
-  
-  var PasswordLength;
-  var confirmLowerCase;
-  var confirmUpperCase;
-  var confirmNumber;
-  var confirmSymbol;
-  var userChoices;
-  
-  
+ 
 //code to make sure a character is selected
+// Write password to the #password input
 
-  
-  
-  // Write password to the #password input
-  function writePassword(passwordLength, confirmLowerCase, confirmUpperCase, confirmNumber, confirmSymbol) {
+  function writePassword() {
     var password = generatePassword();
     var passwordText = document.querySelector("#password");
   
@@ -40,9 +30,9 @@ var symbol = ' !"#$%&()*+,-./:;<=>?@[\]^_`{|}~';
   if(!passwordLength) {
     alert("Required Value");
   } else if (passwordLength <8 || passwordLength >128) {
-    passwordLength = window.prompt("You must choose between 8 and 128");
+    return ("You must choose between 8 and 128");
     
-  } else {
+  } else { 
 
     var confirmLowerCase = window.confirm("Would you like to include lower case letters?");
     console.log("Lower case " + confirmLowerCase);
@@ -55,15 +45,14 @@ var symbol = ' !"#$%&()*+,-./:;<=>?@[\]^_`{|}~';
 
     var confirmSymbol = window.confirm("Would you like to include special characters?");
     console.log("Symbol " + confirmSymbol);
-  ;
-
-  // No answer then
+  // No answer then..
   if (!confirmLowerCase && !confirmUpperCase && !confirmNumber && !confirmSymbol) {
-    userChoices = alert("You must select one!");
+    alert("You must select one!")
+    return ("Try Again!");
     
   }}
   let password = '';
-  let userChoices = [];
+  //let userChoices = []; original changed to ^
   if (confirmLowerCase) password += lowerCase;
     
   if (confirmUpperCase) password += upperCase;
@@ -72,7 +61,7 @@ var symbol = ' !"#$%&()*+,-./:;<=>?@[\]^_`{|}~';
   
   if (confirmSymbol) password += symbol;
   
-  const allChoices = []
+  //const allChoices = [] original changed to v
   let returnPassword = '';
   for (var i = 0; i < passwordLength; i++) {
     returnPassword = returnPassword+password[Math.floor(Math.random() * password.length)]
