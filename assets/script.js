@@ -1,13 +1,10 @@
-// Assignment code here https://www.net-comber.com/charset.html <meta charset="ISO-8859-1">
-//var passwordLength = ">= 8 && <= 128";
+// Assignment code here
 var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var lowerCase = "abcdefghijklmnopqrstuvwxyx";
 var number = "0123456789";
 var symbol = ' !"#$%&()*+,-./:;<=>?@[\]^_`{|}~';
 
-
-  
-  // Get references to the #generate element
+// Get references to the #generate element
   var generateBtn = document.querySelector("#generate"); 
   
   var PasswordLength;
@@ -19,54 +16,22 @@ var symbol = ' !"#$%&()*+,-./:;<=>?@[\]^_`{|}~';
   
   
 //code to make sure a character is selected
-var userChoices = '';
 
-if (confirmLowerCase === true) {
-    userChoices += lowerCase;
-}
-  
-if (confirmUpperCase === true) {
-    userChoices += upperCase;
-}
-  
-if (confirmNumber === true) {
-    userChoices += number;
-}
-  
-if (confirmSymbol === true) {
-    userChoices += symbol;
-}
   
   
   // Write password to the #password input
-  function writePassword() {
-
+  function writePassword(passwordLength, confirmLowerCase, confirmUpperCase, confirmNumber, confirmSymbol) {
     var password = generatePassword();
     var passwordText = document.querySelector("#password");
   
     passwordText.value = password;
-  
-    for (var i = 0; i < passwordLength; i++) {
-        console.log(userChoices[Math.floor(Math.random() * userChoices.length)]);
-        generatePassword(password);
-  }
-    
-    return password;}
-
-
-   // document.getElementById("textarea").value = generatePassword(password);
+}
 
 
   // Add event listener to generate button
   generateBtn.addEventListener("click", writePassword);
 
   function generatePassword() {
-    //window.alert("Your password has been generated!");
-  }
-
-
-
-
 //person->program storage of answers using var
 
     var passwordLength = window.prompt("Password length: choose between 8 and 128 characters.");
@@ -90,13 +55,31 @@ if (confirmSymbol === true) {
 
     var confirmSymbol = window.confirm("Would you like to include special characters?");
     console.log("Symbol " + confirmSymbol);
-
   ;
-  
-  
+
   // No answer then
   if (!confirmLowerCase && !confirmUpperCase && !confirmNumber && !confirmSymbol) {
     userChoices = alert("You must select one!");
+    
   }}
+  let password = '';
+  let userChoices = [];
+  if (confirmLowerCase) password += lowerCase;
+    
+  if (confirmUpperCase) password += upperCase;
+    
+  if (confirmNumber) password += number;
+  
+  if (confirmSymbol) password += symbol;
+  
+  const allChoices = []
+  let returnPassword = '';
+  for (var i = 0; i < passwordLength; i++) {
+    returnPassword = returnPassword+password[Math.floor(Math.random() * password.length)]
 
-  generatePassword();
+  }
+  
+  return returnPassword;
+
+}
+
