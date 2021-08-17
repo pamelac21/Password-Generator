@@ -4,5 +4,4 @@
 
 
 
-
-https://github.com/pamelac21/Password-Generator.git
+[Deployed Website](https://pamelac21.github.io/Password-Generator/)
