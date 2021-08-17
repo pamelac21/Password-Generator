@@ -26,4 +26,8 @@ Usage:
 
 [Deployed Website](https://pamelac21.github.io/Password-Generator/)
 
-Contact: pamelac021@gmail.com   https://github.com/pamelac21
+Contact: 
+
+pamelac021@gmail.com 
+
+https://github.com/pamelac21
